@@ -1,10 +1,15 @@
-﻿#pragma once
+#pragma once
 
 #include <iostream>
 #include <string>
 #include <cmath>
+#define _USE_MATH_DEFINES
 
-#define pi 3.14
+#ifdef M_PI
+double const pi = M_PI;
+#else
+double const pi = 4 * std::atan(1);
+#endif
 
 struct Complex {
 	Complex() {}
