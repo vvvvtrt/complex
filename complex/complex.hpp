@@ -1,10 +1,12 @@
-﻿#pragma once
+﻿#ifndef COMPLEX_HPP
+#define COMPLEX_HPP
 
 #include <iostream>
 #include <string>
 #include <cmath>
 
-#define pi 3.14
+
+double const pi = 4 * std::atan(1);
 
 struct Complex {
 	Complex() {}
@@ -91,3 +93,5 @@ inline std::istream& operator>>(std::istream& istrm, Complex& rhs)
 {
 	return rhs.readFrom(istrm);
 }
+
+#endif
