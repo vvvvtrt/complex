@@ -93,7 +93,7 @@ void test() {
 	std::cout << "a >= b: " << static_cast<bool>(a >= b) << '\n';
 	std::cout << "a <= b: " << static_cast<bool>(a <= b) << '\n';
 
-	std::cout << "div by zero: " << a / 0.0 << '\n';
+	//std::cout << "div by zero: " << a / 0.0 << '\n';
 }
 
 

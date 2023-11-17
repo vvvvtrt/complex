@@ -13,21 +13,23 @@ struct Complex {
 	explicit Complex(const double real);
 	Complex(const double real, const double imaginary);
 
+	~Complex() = default;
 
-	bool operator==(const Complex& rhs) const { return (re == rhs.re && im == rhs.im); }
-	bool operator!=(const Complex& rhs) const { return (!(operator==(rhs))); }
+	[[nodiscard]] bool operator==(const Complex& rhs) const { return (re == rhs.re && im == rhs.im); }
+	[[nodiscard]] bool operator!=(const Complex& rhs) const { return (!(operator==(rhs))); }
 
-	bool operator>(const Complex& rhs) const { return (std::sqrt(re * re + im * im) > std::sqrt(rhs.re * rhs.re + rhs.im * rhs.im)); }
-	bool operator<(const Complex& rhs) const { return (std::sqrt(re * re + im * im) < std::sqrt(rhs.re * rhs.re + rhs.im * rhs.im)); }
+	[[nodiscard]] bool operator>(const Complex& rhs) const { return (std::sqrt(re * re + im * im) > std::sqrt(rhs.re * rhs.re + rhs.im * rhs.im)); }
+	[[nodiscard]] bool operator<(const Complex& rhs) const { return (std::sqrt(re * re + im * im) < std::sqrt(rhs.re * rhs.re + rhs.im * rhs.im)); }
 
-	bool operator>=(const Complex& rhs) const { return (operator==(rhs) || operator>(rhs)); }
-	bool operator<=(const Complex& rhs) const { return (operator==(rhs) || operator<(rhs)); }
+	[[nodiscard]] bool operator>=(const Complex& rhs) const { return (operator==(rhs) || operator>(rhs)); }
+	[[nodiscard]] bool operator<=(const Complex& rhs) const { return (operator==(rhs) || operator<(rhs)); }
 
 	Complex& operator+=(const Complex& rhs);
 	Complex& operator+=(const double rhs) { return (operator+=(Complex(rhs))); }
 
 	Complex& operator-=(const Complex& rhs);
 	Complex& operator-=(const double rhs) { return (operator-=(Complex(rhs))); }
+	Complex operator-() const noexcept { return Complex(-re, -im);  }
 
 	Complex& operator*=(const Complex& rhs);
 	Complex& operator*=(const double rhs) { return (operator*=(Complex(rhs))); }
@@ -38,11 +40,11 @@ struct Complex {
 	std::ostream& writeTo(std::ostream& ostrm) const;
 	std::istream& readFrom(std::istream& istrm);
 
-	double abs() { return std::sqrt(re * re + im * im); }
+	[[nodiscard]] double abs() { return std::sqrt(re * re + im * im); }
 	void conjugate() { im = -im; }
 
 	void pow(int base);
-	double argument();
+	[[nodiscard]] double argument();
 	void sqrt(int base);
 
 
@@ -74,12 +76,12 @@ Complex operator/(const double& lhs, const Complex& rhs);
 Complex operator/(const Complex& lhs, const double& rhs); 
 
 
-double abs(const Complex& num);
-double argument(const Complex& num);
+[[nodiscard]] double abs(const Complex& num);
+[[nodiscard]] double argument(const Complex& num);
 
-Complex pow(const Complex& lhs, int n);
-Complex conjugate(const Complex& num);
-Complex sqrt(Complex num, int base);
+[[nodiscard]] Complex pow(const Complex& lhs, int n);
+[[nodiscard]] Complex conjugate(const Complex& num);
+[[nodiscard]] Complex sqrt(Complex num, int base);
 
 void errors(std::string message);
 
