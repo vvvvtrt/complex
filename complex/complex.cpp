@@ -76,7 +76,7 @@ double Complex::argument() {
 
 void errors(std::string message) {
 	std::cerr << message << "\n" << std::endl;
-	std::exit(1);
+	std::exit(8);
 }
 
 double abs(const Complex& num) {

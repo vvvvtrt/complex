@@ -1,15 +1,12 @@
-#pragma once
+﻿#ifndef COMPLEX_HPP
+#define COMPLEX_HPP
 
 #include <iostream>
 #include <string>
 #include <cmath>
-#define _USE_MATH_DEFINES
 
-#ifdef M_PI
-double const pi = M_PI;
-#else
+
 double const pi = 4 * std::atan(1);
-#endif
 
 struct Complex {
 	Complex() {}
@@ -96,3 +93,5 @@ inline std::istream& operator>>(std::istream& istrm, Complex& rhs)
 {
 	return rhs.readFrom(istrm);
 }
+
+#endif
